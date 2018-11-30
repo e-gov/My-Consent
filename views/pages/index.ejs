@@ -15,7 +15,7 @@
 
   <div id='Toiminguvalikurida' style='display: flex; flex-wrap: wrap; justify-content: center'>
     <div id='AnnaNupp' class='toimingunupp'>Annan nõusoleku</div>
-    <div id='TyhistaNupp' class='toimingunupp'>Tyhistan nõusoleku</div>
+    <div id='TyhistaNupp' class='toimingunupp'>Tühistan nõusoleku</div>
     <div id='MinuNousolekud' class='toimingunupp'>Minu nõusolekud</div>
   </div>
 
@@ -37,13 +37,15 @@
       <input id='MisAjani' type='text' class='form-control' autocomplete='off'>
     </label>
     <div class='rida'>
-      Olen teadlik, et võin nõusoleku igal ajal tagasi võtta. 
+      Olen teadlik, et võin nõusoleku igal ajal tagasi võtta.<br>
+      Kinnitan nõusolekut oma allkirjaga.
     </div>
-    <div id='Kinnitusplokk' style='display: flex; justify-content: flex-end;'>
-      <span>Kinnitan nõusolekut oma allkirjaga.</span>
-      <p id='AnnaNousolekNupp' class='nupp' style='margin-left: 1rem;' title='Anna nõusolek'>
-        <i class='ikoon material-icons' style='color: green;'>check</i>
-      </p>
+    <div class='rida'>
+        Aseta ID-kaart kaardilugejasse ja vajuta "Allkirjastan".<br>
+        Eelnevalt pead olema arvutisse paigaldanud ID-kaardi baastarkvara.
+      </div>  
+    <div id='Kinnitusplokk' style='display: flex; justify-content: center;'>
+      <div id='Allkirjastan'>Allkirjastan</div>
     </div>
   </div>
 

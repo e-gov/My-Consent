@@ -37,6 +37,12 @@ h1 {
   width: 10rem;
 }
 
+#Allkirjastan {
+  margin-top: 1.5rem; border-radius:10px; border: 3px solid tomato;
+  color: tomato;
+  padding: 10px; width: 15rem; text-align: center;
+}
+
 .ikoon {
   font-family: 'Material Icons';
   font-size: 48px; color: #757575;
