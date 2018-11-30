@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/e-gov/VOLLI-Exp#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.4.0"
   }
 }

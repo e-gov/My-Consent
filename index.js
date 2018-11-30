@@ -16,11 +16,17 @@ const crypto = require('crypto');
 /* Määra räsialgoritm - SHA256 */
 const HASH_ALGO = 'sha256';
 
+/* JWT töötlemise teek */
+const jsonwebtoken = require('jsonwebtoken');
+
 /* Veebiserveri ettevalmistamine */
 const app = express();
 /* Kui Heroku keskkonnamuutujas ei ole määratud teisiti,
  siis kasutatakse porti 80. */
 app.set('port', (process.env.PORT || 80));
+
+/* HTTP päringu keha töötlemise teek */
+const bodyParser = require('body-parser');
 
 /* Sea juurkaust, millest serveeritakse sirvikusse ressursse
  vt http://expressjs.com/en/starter/static-files.html 
@@ -33,6 +39,9 @@ app.set('views', __dirname + '/views');
 /* Määra kasutatav mallimootor */
 app.set('view engine', 'ejs');
 
+/* Loo body-parser töötlema application/json päringuid */
+var jsonParser = bodyParser.json();
+
 /**
  *  Järgnevad marsruuteri töötlusreeglid
  */
@@ -43,6 +52,30 @@ app.set('view engine', 'ejs');
  */
 app.get('/', function (req, res) {
   res.render('pages/index');
+});
+
+/**
+ * Tõendi moodustamine
+ * AJAX-otspunkt,
+ * võtab sirvikust tõendi keha, tagastab tõendi.
+ */
+app.get('/getJWT', jsonParser, function (req, res) {
+
+  if (!req.body) {
+    return res.status(500).json({ error: 'Tõendi keha ei tulnud päringus'});
+  }
+
+  var jwt = jsonwebtoken.sign(
+    req.body.payload,
+    'Tõendi allkirja saladus',
+    {
+      "algorithm": "HS256",
+      "issuer": "Volli-POC",
+      "subject": "Nõusolekutõend"
+    });
+
+  res.status(200).json({ jwt: jwt});
+
 });
 
 /**
