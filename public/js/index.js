@@ -50,7 +50,7 @@ function alusta() {
         window.hwcrypto.sign(
           cert,
           { type: hashtype, hex: hash },
-          { lang: lang }
+          { lang: 'et' }
         )
           .then(function (response) {
             log_text("Moodustatud allkiri:\n" +
