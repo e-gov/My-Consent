@@ -32,14 +32,15 @@ function alusta() {
     document.getElementById('Valjastusala').innerHTML = '';
     // Timestamp
     log_text("sign() clicked on " + new Date().toUTCString());
-    var hashtype = hashes['SHA-256'];
-    var backend = 'auto';
-    var lang = 'et';
-    if (!window.hwcrypto.use(backend)) {
+    
+    if (!window.hwcrypto.use('auto')) {
       log_text("Selecting backend failed.");
     }
-    var hash = $("#hashvalue").val();
+    
+    var hashtype = hashes['SHA-256'];
+    var hash = '413140d54372f9baf481d4c54e2d5c7bcf28fd6087000280e07976121dd54af2';
     log_text("Signing " + hashtype + ": " + hash);
+
     // debug
     window.hwcrypto.debug().then(function (response) {
       log_text("Debug: " + response);
@@ -47,17 +48,22 @@ function alusta() {
       log_text("debug() failed: " + err);
       return;
     });
-    // Sign
-    window.hwcrypto.getCertificate({ lang: lang }).then(function (response) {
-      var cert = response;
-      log_text("Using certificate:\n" + hexToPem(response.hex));
-      window.hwcrypto.sign(cert, { type: hashtype, hex: hash }, { lang: lang }).then(function (response) {
-        log_text("Generated signature:\n" + response.hex.match(/.{1,64}/g).join("\n"));
+
+    // Allkirjasta
+    window.hwcrypto.getCertificate({ lang: 'et' })
+      .then(function (response) {
+        var cert = response;
+        log_text("Using certificate:\n" + hexToPem(response.hex));
+        window.hwcrypto.sign(cert, { type: hashtype, hex: hash }, { lang: lang })
+          .then(function (response) {
+            log_text("Moodustatud allkiri:\n" +
+              response.hex.match(/.{1,64}/g).join("\n"));
+          }, function (err) {
+            log_text("Allkirjastamine ebaõnnestus: " + err);
+          });
       }, function (err) {
-        log_text("sign() failed: " + err);
+        log_text("Allkirjastamine ebaõnnestus. Kontrolli, kas ID-kaart on lugejas. : "
+          + err);
       });
-    }, function (err) {
-      log_text("getCertificate() failed: " + err);
-    });
   }
 }
