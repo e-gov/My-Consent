@@ -3,14 +3,14 @@
 const Valjastusala = document.getElementById('Valjastusala');
 const Teateala = document.getElementById('Teateala');
 
-function logi_text(s) {
-  var d = document.createElement("div");
-  d.innerHTML = s;
-  document.getElementById('Valjastusala').appendChild(d);
-}
-
 function alusta() {
   $('#Allkirjastan').click(() => {
+
+    function logi_text(s) {
+      var d = document.createElement("div");
+      d.innerHTML = s;
+      document.getElementById('Valjastusala').appendChild(d);
+    }
 
     // Tühjenda logi
     document.getElementById('Valjastusala').innerHTML = '';
@@ -52,7 +52,7 @@ function alusta() {
           }
         },
         error: (jqXHR, status, error) => {
-          logi - text('Tõendi moodustamine ebaõnnestus. :(');
+          logi_text('Tõendi moodustamine ebaõnnestus. :(');
         }
       }
     );
