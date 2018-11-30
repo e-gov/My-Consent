@@ -3,7 +3,7 @@
 const Valjastusala = document.getElementById('Valjastusala');
 const Teateala = document.getElementById('Teateala');
 
-function log_text(s) {
+function logi_text(s) {
   var d = document.createElement("div");
   d.innerHTML = s;
   document.getElementById('Valjastusala').appendChild(d);
