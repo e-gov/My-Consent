@@ -3,14 +3,20 @@
 
 <head>
   <% include ../partials/header.ejs %>
+
+    <!-- Including CryptoJS required libraries -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/hmac-sha256.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64-min.js"></script>
+
     <script src='../js/index.js' defer></script>
-    <title>VOLLI-Exp</title>
+    
+    <title>Volli (POC)</title>
 </head>
 
 <body onload='alusta()'>
 
   <h1>
-    Nõusolekuteenus VOLLI (POC).
+    Nõusolekuteenus Volli (POC)
   </h1>
 
   <div id='Toiminguvalikurida' style='display: flex; flex-wrap: wrap; justify-content: center'>
@@ -37,13 +43,13 @@
       <input id='MisAjani' type='text' class='form-control' autocomplete='off'>
     </label>
     <div class='rida'>
-      Olen teadlik, et võin nõusoleku igal ajal tagasi võtta.<br>
-      Kinnitan nõusolekut oma allkirjaga.
+      Olen teadlik, et võin nõusoleku igal ajal tagasi võtta.
+      <br> Kinnitan nõusolekut oma allkirjaga.
     </div>
     <div class='rida'>
-        Aseta ID-kaart kaardilugejasse ja vajuta "Allkirjastan".<br>
-        Eelnevalt pead olema arvutisse paigaldanud ID-kaardi baastarkvara.
-      </div>  
+      Aseta ID-kaart kaardilugejasse ja vajuta "Allkirjastan".
+      <br> Eelnevalt pead olema arvutisse paigaldanud ID-kaardi baastarkvara.
+    </div>
     <div id='Kinnitusplokk' style='display: flex; justify-content: center;'>
       <div id='Allkirjastan'>Allkirjastan</div>
     </div>
