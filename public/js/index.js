@@ -9,19 +9,27 @@ function alusta() {
     var toendiKeha = koostaToendiKeha('PRIIT', 'Allkiri');
 
     // Tee AJAX-pöördumine serveri poolele tõendi moodustamiseks.
-    var postDeferred = $.post(
+    $.ajax(
       'https://volli-poc.herokuapp.com/getJWT',
-     { toendiKeha: toendiKeha });
-    postDeferred.done(function(data, status) {
-      console.log('salvestaTekst: POST vastus: data (töölehe tulemus): ' + data.result);
-      console.log('salvestaTekst: POST vastus: status: ' + status);
-      if (status !== 'success') {
-        logi_text('Tõendi moodustamine ebaõnnestus. :(');
-        return
+      {
+        data: JSON.stringify({ toendiKeha: toendiKeha }),
+        contentType: 'application/json',
+        type: 'POST',
+        success: (data, status) => {
+          console.log('salvestaTekst: POST vastus: data (töölehe tulemus): ' + data.result);
+          console.log('salvestaTekst: POST vastus: status: ' + status);
+          if (status !== 'success') {
+            logi_text('Tõendi moodustamine ebaõnnestus. :(');
+            return
+          }
+          logi_text('Tõend:');
+          logi_text(data);
+        },
+        error: (jqXHR, status, error) => {
+          logi-text('Tõendi moodustamine ebaõnnestus. :(');
+        }
       }
-      logi_text('Tõend:');
-      logi_text(data);
-    });
+    );
 
     // Valjastusala.textContent = 'OK';
   });
