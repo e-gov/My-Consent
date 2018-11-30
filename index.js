@@ -59,7 +59,7 @@ app.get('/', function (req, res) {
  * AJAX-otspunkt,
  * võtab sirvikust tõendi keha, tagastab tõendi.
  */
-app.get('/getJWT', jsonParser, function (req, res) {
+app.post('/getJWT', jsonParser, function (req, res) {
 
   if (!req.body) {
     return res.status(500).json({ error: 'Tõendi keha ei tulnud päringus'});
