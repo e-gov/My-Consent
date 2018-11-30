@@ -66,7 +66,7 @@ app.post('/getJWT', jsonParser, function (req, res) {
   }
 
   console.log('Saadud päringukeha:');
-  console.log(JSON.toString(req.body));
+  console.log(JSON.Stringify(req.body));
 
   var jwt = jsonwebtoken.sign(
     req.body.toendiKeha,
