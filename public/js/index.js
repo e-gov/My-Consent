@@ -11,9 +11,28 @@ function logi_text(s) {
 
 function alusta() {
   $('#Allkirjastan').click(() => {
-    // allkirjasta();
-    logi_text('Koostan tõendi...');
-    var toendiKeha = koostaToendiKeha('PRIIT', 'Allkiri');
+
+    // Tühjenda logi
+    document.getElementById('Valjastusala').innerHTML = '';
+
+    // Koosta nõusoleku andja poolt allkirjastatav struktuur
+    var nousolek = {
+      "kellele": $('Kellele').val(),
+      "milleks": $('Milleks').val(),
+      "mis ajani": $('MisAjani').val(),
+      "nõusoleku andis": 'PRIIT',
+      "nõusolekuteenus": "Volli-POC",
+      "kuupäev": new Date().toUTCString()
+    };
+
+    // Võta allkiri
+    var allkiri = 'Allkiri';
+
+    // Koosta tõend    
+    var toendiKeha = {
+      "nõusolek": nousolek,
+      "allkiri": allkiri
+    };
     logi_text('Koostatud tõend:');
     logi_text(JSON.stringify(toendiKeha, undefined, 4));
 
@@ -31,37 +50,20 @@ function alusta() {
             logi_text('Tõendi moodustamine ebaõnnestus. :(');
             return
           }
-          logi_text('Tõend:');
-          logi_text(data);
         },
         error: (jqXHR, status, error) => {
-          logi-text('Tõendi moodustamine ebaõnnestus. :(');
+          logi - text('Tõendi moodustamine ebaõnnestus. :(');
         }
       }
     );
 
-    // Valjastusala.textContent = 'OK';
   });
-
-  function koostaToendiKeha(andja, allkiri) {
-    return {
-      "kellele": $('Kellele').val(),
-      "milleks": $('Milleks').val(),
-      "mis ajani": $('MisAjani').val(),
-      "nõusoleku andis": andja,
-      "nõusoleku andja allkiri": allkiri,
-      "tõendi väljastas": "Volli-POC",
-      "tõend väljastatud": new Date().toUTCString()
-    }
-  }
 
   function debug() {
     window.hwcrypto.debug().then(function (response) { log_text("Debug: " + response); });
   }
 
   function allkirjasta() {
-    // Clear log
-    document.getElementById('Valjastusala').innerHTML = '';
     // Timestamp
     log_text("sign() clicked on " + new Date().toUTCString());
 
