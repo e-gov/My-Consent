@@ -3,10 +3,19 @@
 const Valjastusala = document.getElementById('Valjastusala');
 const Teateala = document.getElementById('Teateala');
 
+function log_text(s) {
+  var d = document.createElement("div");
+  d.innerHTML = s;
+  document.getElementById('Valjastusala').appendChild(d);
+}
+
 function alusta() {
   $('#Allkirjastan').click(() => {
     // allkirjasta();
+    logi_text('Koostan tõendi...');
     var toendiKeha = koostaToendiKeha('PRIIT', 'Allkiri');
+    logi_text('Koostatud tõend:');
+    logi_text(JSON.stringify(toendiKeha, undefined, 4));
 
     // Tee AJAX-pöördumine serveri poolele tõendi moodustamiseks.
     $.ajax(
@@ -44,12 +53,6 @@ function alusta() {
       "tõendi väljastas": "Volli-POC",
       "tõend väljastatud": new Date().toUTCString()
     }
-  }
-
-  function log_text(s) {
-    var d = document.createElement("div");
-    d.innerHTML = s;
-    document.getElementById('Valjastusala').appendChild(d);
   }
 
   function debug() {
