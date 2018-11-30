@@ -26,6 +26,7 @@ function alusta() {
     };
 
     // Võta allkiri
+    allkirjasta();
     var allkiri = 'Allkiri';
 
     // Koosta tõend    
