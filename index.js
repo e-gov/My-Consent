@@ -16,9 +16,6 @@ const crypto = require('crypto');
 /* Määra räsialgoritm - SHA256 */
 const HASH_ALGO = 'sha256';
 
-/* Veebitõendi (JWT) töötlusvahend. Kasutame identsustõendi kontrollimisel */
-var jwt = require('jsonwebtoken');
-
 /* Veebiserveri ettevalmistamine */
 const app = express();
 /* Kui Heroku keskkonnamuutujas ei ole määratud teisiti,
@@ -45,9 +42,7 @@ app.set('view engine', 'ejs');
  * Esilehe kuvamine
  */
 app.get('/', function (req, res) {
-  res.render('pages/index', {
-    paigalduseTyyp: PAIGALDUSETYYP
-  });
+  res.render('pages/index');
 });
 
 /**

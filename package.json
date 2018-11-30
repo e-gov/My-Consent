@@ -1,0 +1,23 @@
+{
+  "name": "volli-exp",
+  "version": "1.0.0",
+  "description": "Experimental Consent Management Service",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/e-gov/VOLLI-Exp.git"
+  },
+  "author": "Priit Parmakson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/e-gov/VOLLI-Exp/issues"
+  },
+  "homepage": "https://github.com/e-gov/VOLLI-Exp#readme",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4"
+  }
+}
