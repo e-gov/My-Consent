@@ -1,2 +1,2 @@
-# VOLLI-Exp
-Experimental Consent Management Solution
+# Volli-POC
+Nõusolekuteenuse *proof-of-concept*.
