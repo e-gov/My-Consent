@@ -3,14 +3,14 @@
 const Valjastusala = document.getElementById('Valjastusala');
 const Teateala = document.getElementById('Teateala');
 
+function logi_text(s) {
+  var d = document.createElement("div");
+  d.innerHTML = s;
+  document.getElementById('Valjastusala').appendChild(d);
+}
+
 function alusta() {
   $('#Allkirjastan').click(() => {
-
-    function logi_text(s) {
-      var d = document.createElement("div");
-      d.innerHTML = s;
-      document.getElementById('Valjastusala').appendChild(d);
-    }
 
     // Tühjenda logi
     document.getElementById('Valjastusala').innerHTML = '';
@@ -77,12 +77,15 @@ function alusta() {
     // log_text("Signing " + hashtype + ": " + hash);
 
     // debug
-    window.hwcrypto.debug().then(function (response) {
-      log_text("Debug: " + response);
-    }, function (err) {
-      log_text("debug() failed: " + err);
-      return;
-    });
+    window.hwcrypto.debug()
+      .then(
+        (response) => {
+          log_text("Debug: " + response);
+        },
+        (err) => {
+          log_text("debug() failed: " + err);
+          return;
+        });
 
     // Allkirjasta
     window.hwcrypto.getCertificate({ lang: 'et' })
