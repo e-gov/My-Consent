@@ -24,6 +24,11 @@ h1 {
   margin-bottom: 1rem;
 }
 
+.toimingunupp {
+  margin: 0.5rem 1rem; border-radius: 4px; border: 1px solid turquoise;
+  padding: 4px; width: 10rem; text-align: center;
+}
+
 .rida {
   display: flex; margin: 1rem 0;
 }
