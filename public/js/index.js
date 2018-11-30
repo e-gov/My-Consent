@@ -11,7 +11,7 @@ function alusta() {
     // Tee AJAX-pöördumine serveri poolele tõendi moodustamiseks.
     var postDeferred = $.post(
       'https://volli-poc.herokuapp.com/getJWT',
-     toendiKeha);
+     { toendiKeha: toendiKeha });
     postDeferred.done(function(data, status) {
       console.log('salvestaTekst: POST vastus: data (töölehe tulemus): ' + data.result);
       console.log('salvestaTekst: POST vastus: status: ' + status);

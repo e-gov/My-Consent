@@ -65,8 +65,11 @@ app.get('/getJWT', jsonParser, function (req, res) {
     return res.status(500).json({ error: 'Tõendi keha ei tulnud päringus'});
   }
 
+  console.log('Saadud päringukeha:');
+  console.log(JSON.toString(req.body));
+
   var jwt = jsonwebtoken.sign(
-    req.body.payload,
+    req.body.toendiKeha,
     'Tõendi allkirja saladus',
     {
       "algorithm": "HS256",
