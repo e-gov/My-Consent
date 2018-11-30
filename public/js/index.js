@@ -32,11 +32,11 @@ function alusta() {
     document.getElementById('Valjastusala').innerHTML = '';
     // Timestamp
     log_text("sign() clicked on " + new Date().toUTCString());
-    
+
     if (!window.hwcrypto.use('auto')) {
       log_text("Selecting backend failed.");
     }
-    
+
     var hashtype = hashes['SHA-256'];
     var hash = '413140d54372f9baf481d4c54e2d5c7bcf28fd6087000280e07976121dd54af2';
     log_text("Signing " + hashtype + ": " + hash);
@@ -53,8 +53,13 @@ function alusta() {
     window.hwcrypto.getCertificate({ lang: 'et' })
       .then(function (response) {
         var cert = response;
-        log_text("Using certificate:\n" + hexToPem(response.hex));
-        window.hwcrypto.sign(cert, { type: hashtype, hex: hash }, { lang: lang })
+        var certPEM = hexToPem(response.hex);
+        log_text("Sert loetud:\n");
+        window.hwcrypto.sign(
+          cert,
+          { type: hashtype, hex: hash },
+          { lang: lang }
+        )
           .then(function (response) {
             log_text("Moodustatud allkiri:\n" +
               response.hex.match(/.{1,64}/g).join("\n"));
