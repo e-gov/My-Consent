@@ -4,7 +4,7 @@ const Valjastusala = document.getElementById('Valjastusala');
 const Teateala = document.getElementById('Teateala');
 
 function alusta() {
-  $('#AnnaNousolekNupp').click(() => {
+  $('#Allkirjastan').click(() => {
     sign();
     // Valjastusala.textContent = 'OK';
   });

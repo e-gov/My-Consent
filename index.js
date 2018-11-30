@@ -19,8 +19,8 @@ const HASH_ALGO = 'sha256';
 /* Veebiserveri ettevalmistamine */
 const app = express();
 /* Kui Heroku keskkonnamuutujas ei ole määratud teisiti,
- siis kasutatakse porti 5000. */
-app.set('port', (process.env.PORT || 5000));
+ siis kasutatakse porti 80. */
+app.set('port', (process.env.PORT || 80));
 
 /* Sea juurkaust, millest serveeritakse sirvikusse ressursse
  vt http://expressjs.com/en/starter/static-files.html 
