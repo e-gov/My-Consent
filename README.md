@@ -15,12 +15,12 @@ Nõusolekuteenus on asutuse andmekogu juures evitatud e-teenus, millega:
 
 Kasutusjuht. Nõusolekuteenuse kasutusjuhuks on olukord, kus:
 
-    füüsiline isik, edaspidi kodanik,
-    soovib anda nõusoleku, edaspidi nõusolek,
-    tema kohta asutuse andmekogus hoitavatele andmetele, edaspidi isikuandmete,
-    masinloetava juurdepääsu andmiseks
-    kolmanda isiku, edaspidi andmekasutaja,
-    infosüsteemile.
+- füüsiline isik, edaspidi kodanik,
+- soovib anda nõusoleku, edaspidi nõusolek,
+- tema kohta asutuse andmekogus hoitavatele andmetele, edaspidi isikuandmete,
+- masinloetava juurdepääsu andmiseks
+- kolmanda isiku, edaspidi andmekasutaja,
+- infosüsteemile.
 
 Andmekasutaja. Andmekasutaja on tüüpiliselt ettevõte, nt idufirma.
 
