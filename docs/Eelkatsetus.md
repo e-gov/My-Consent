@@ -1,3 +1,3 @@
 Kasutajaliides:
 
-![](docs/KasutajaliideseNaide.PNG)
+![](KasutajaliideseNaide.PNG)
