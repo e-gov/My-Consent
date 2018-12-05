@@ -56,6 +56,4 @@ Koondvaateteenusega saab:
 
 ![](docs/Kontseptsioon.PNG)
 
-Kasutajaliides:
-
-![](docs/KasutajaliideseNaide.PNG)
+Vt ka: [eelkatsetus (nõusoleku võtmise UI + allkirjastamine hwcrypto.js + JWT abil](Eelkatsetus)
