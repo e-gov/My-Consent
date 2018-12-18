@@ -24,7 +24,12 @@ function alusta() {
           return;
         });
 
-    window.hwcrypto.getCertificate({ lang: 'et', filter: 'AUTH' })
+    var options = { lang: 'et' };
+    if (document.getElementById("radio1").checked = true) {
+      options['filter'] = 'AUTH'
+    }
+
+    window.hwcrypto.getCertificate(options)
       .then(
         function (response) {
           var certPEM = hexToPem(response.hex);
