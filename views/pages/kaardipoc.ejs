@@ -21,11 +21,17 @@
   <div id='abiteave'>
 
     <p>
-      Veebirakendus pärib kasutaja ID-kaardilt serdi (mitte TLS-i,
-      vaid sirviku Javascripti kaudu). Sert saadetakse AJAX-päringuga
-      serveri poolele. Server loeb serdilt serdi nr-i, subjekti ja väljaandja
-      ning saadab need andmed sirvikusse, kus need kuvatakse. Sirvikus
-      töötav Javascript pöördub hwcrypto.js, see omakorda ID-kaardi baastarkvara poole.
+      Veebirakendus pärib kasutaja ID-kaardilt serdi. Päritakse mitte TLS-i,
+      vaid sirviku Javascripti kaudu. Sert saadetakse AJAX-päringuga
+      serveri poolele. Server loeb serdilt serdi nr-i, subjekti ja väljaandja.
+      Server saadab serdilt loetud andmed sirvikusse, kus need kuvatakse.<br>
+      <br>
+      Sirvikus töötav Javascript pöördub hwcrypto.js, see omakorda ID-kaardi baastarkvara poole.
+      Sõltuvalt sirvikust on baastarkvara komponent Chrome Token Signing vm.<br><br>
+      Serdi pärimisel küsib ID-kaardi baastarkvara alati kasutaja nõusolekut serdi edastamiseks
+      rakendusele. Kaardi seesoleku kontrollimiseks ilma kasutajat tülitamata tuleks
+      rakenduse Javascriptist pöörduda otse ID-kaardi baastarkvara poole (ilma hwcrypto.js-ta).
+      See võimalus vajab veel uurimist.
     </p>
 
     <div id='sulgeAbiteaveNupp' class='nupp' title='Sulge'>
@@ -57,6 +63,14 @@
   <div id='logi'>
   </div>
 
+  <div class='jalus'>
+    <p>
+      Riigi Infosüsteemi Amet · 2018 ·
+      <a href='https://github.com/e-gov/Volli-POC'>
+        https://github.com/e-gov/Volli-POC
+      </a>
+    </p>
+  </div>
 </body>
 
 </html>
