@@ -20,8 +20,9 @@ const crypto = require('crypto');
 /* Määra räsialgoritm - SHA256 */
 const HASH_ALGO = 'sha256';
 
-/* X.509 serdi dekodeerimiseks */
-const forge = require('node-forge');
+/* Serdi dekodeerimiseks */
+const Pkijs = require('pkijs')
+const Asn1js = require('asn1js')
 
 /* JWT töötlemise teek */
 const jsonwebtoken = require('jsonwebtoken');
@@ -53,7 +54,6 @@ var jsonParser = bodyParser.json();
  *  Järgnevad marsruuteri töötlusreeglid
  */
 
-
 /**
  * Esilehe kuvamine
  */
@@ -71,31 +71,50 @@ app.get('/kaardipoc', function (req, res) {
 /**
  * Dekodeeri PEM sert
  */
- app.post('/decodeCert', jsonParser, function (req, res) {
+app.post('/decodeCert', jsonParser, function (req, res) {
 
-if (!req.body) {
-  return res.status(500).json({ error: 'Sert ei tulnud päringus' });
-}
+  if (!req.body) {
+    return res.status(500).json({ error: 'Sert ei tulnud päringus' });
+  }
 
-var c = req.body.cert;
-console.log('Saadud sert:');
-console.log(c);
+  var c = req.body.cert;
+  console.log('Saadud sert:');
+  console.log(c);
 
-console.log('Dekodeerin serti...');
-var dc = forge.pki.certificateFromPem(c);
-console.log('Sert dekodeeritud...');
+  console.log('Dekodeerin serti...');
+  var dc = decodeCert(c);
+  console.log('Sert dekodeeritud...');
 
-// var dc = forge.util.decode64(c);
-
-console.log(JSON.stringify(dc));
-
-res.status(200)
-  .json(
-    {
-      serditeave: c
-    }
-  );
- });
+  // Koosta objekt huvipakkuvatest elementidest
+  var h = new Object;
+  
+  h['serialNumber'] = ab2str(dc.serialNumber.valueBlock.valueHex);
+  
+  var issuer = '';
+  dc.issuer.typesAndValues.forEach((e) => {
+      issuer = issuer + 
+      ( (issuer === '') ? '' : ', ') + 
+      e.value.valueBlock.value;
+  });
+  
+  var subject = '';
+  dc.issuer.typesAndValues.forEach((e) => {
+      subject = subject + 
+      ( (subject === '') ? '' : ', ') + 
+      e.value.valueBlock.value;
+  });
+  
+  h['issuer'] = issuer;
+  h['subject'] = subject;
+  
+  console.log(JSON.stringify(h));
+  res.status(200)
+    .json(
+      {
+        serditeave: h
+      }
+    );
+});
 
 /**
  * Tõendi moodustamine
@@ -123,6 +142,32 @@ app.post('/getJWT', jsonParser, function (req, res) {
   res.status(200).json({ jwt: jwt });
 
 });
+
+// Minimal example of loading a PEM certificate using pkijs (in node)
+
+// babel-polyfill needs to be loaded for pkijs
+// It uses webcrypto which needs browser shims
+require('babel-polyfill')
+
+function decodeCert(pem) {
+    if(typeof pem !== 'string') {
+        throw new Error('Expected PEM as string')
+    }
+
+    // Load certificate in PEM encoding (base64 encoded DER)
+    const b64 = cert.replace(/(-----(BEGIN|END) CERTIFICATE-----|[\n\r])/g, '')
+
+    // Now that we have decoded the cert it's now in DER-encoding
+    const der = Buffer(b64, 'base64')
+
+    // And massage the cert into a BER encoded one
+    const ber = new Uint8Array(der).buffer
+
+    // And now Asn1js can decode things \o/
+    const asn1 = Asn1js.fromBER(ber)
+
+    return new Pkijs.Certificate({ schema: asn1.result })
+}
 
 /**
  * Veebiserveri käivitamine 

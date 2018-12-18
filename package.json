@@ -17,10 +17,13 @@
   },
   "homepage": "https://github.com/e-gov/VOLLI-Exp#readme",
   "dependencies": {
+    "asn1js": "^2.0.21",
+    "babel-polyfill": "^6.26.0",
     "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "jsonwebtoken": "^8.4.0",
-    "node-forge": "^0.7.6"
+    "node-forge": "^0.7.6",
+    "pkijs": "^2.1.74"
   }
 }
