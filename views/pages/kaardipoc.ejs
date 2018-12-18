@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Kaardieksperiment</title>
+  <title>Kaardi kontrolli POC</title>
 
   <% include ../partials/header.ejs %>
 
@@ -17,6 +17,21 @@
 <body onload="alusta();">
 
   <h1>Kaardieksperiment</h1>
+
+  <div id='abiteave'>
+
+    <p>
+      Veebirakendus pärib kasutaja ID-kaardilt serdi (mitte TLS-i,
+      vaid sirviku Javascripti kaudu). Sert saadetakse AJAX-päringuga
+      serveri poolele. Server loeb serdilt serdi nr-i, subjekti ja väljaandja
+      ning saadab need andmed sirvikusse, kus need kuvatakse. Sirvikus
+      töötav Javascript pöördub hwcrypto.js, see omakorda ID-kaardi baastarkvara poole.
+    </p>
+
+    <div id='sulgeAbiteaveNupp' class='nupp' title='Sulge'>
+      <i class='ikoon material-icons'>clear</i>
+    </div>
+  </div>
 
   <p>Kumba serti pärida?</p>
   <div style='display: flex;'>
@@ -42,8 +57,6 @@
   <div id='logi'>
   </div>
 
-  <div id='Tulem'>
-  </div>
 </body>
 
 </html>

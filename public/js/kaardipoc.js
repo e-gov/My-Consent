@@ -1,5 +1,9 @@
 'use strict';
 
+$('#sulgeAbiteaveNupp').click(() => {
+  $('#abiteave').addClass('peidetud');
+});
+
 function logi(teade) {
   $('#logi').append('<br>' + teade);
 }
@@ -58,7 +62,7 @@ function alusta() {
           var inimkujul = JSON.stringify(data.serditeave, undefined, 2);
           console.log('kuvaSert: POST vastus: : ' +
             inimkujul);
-          $('#Tulem').text(inimkujul);
+          logi.text(inimkujul);
           console.log('kuvaSert: POST vastus: status: ' + status);
           if (status !== 'success') {
             logi('Serdi dekodeerimine ebaõnnestus. :(');
@@ -70,7 +74,6 @@ function alusta() {
         }
       }
     );
-
 
   }
 
