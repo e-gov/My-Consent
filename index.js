@@ -21,7 +21,7 @@ const crypto = require('crypto');
 const HASH_ALGO = 'sha256';
 
 /* X.509 serdi dekodeerija */
-const x509 = require('x509');
+const forge = require('node-forge');
 
 /* JWT töötlemise teek */
 const jsonwebtoken = require('jsonwebtoken');
@@ -71,24 +71,26 @@ app.get('/kaardipoc', function (req, res) {
 /**
  * Dekodeeri PEM sert
  app.post('/decodeCert', jsonParser, function (req, res) {
-   
-   if (!req.body) {
-     return res.status(500).json({ error: 'Sert ei tulnud päringus' });
+   */
+
+if (!req.body) {
+  return res.status(500).json({ error: 'Sert ei tulnud päringus' });
+}
+
+var c = req.body.cert;
+
+// var dc = forge.asn1.fromDer(c);
+
+console.log('Saadud sert:');
+console.log(JSON.stringify(c));
+
+res.status(200)
+  .json(
+    {
+      serditeave: c
     }
-    
-    var c = req.body.certPEM;
-    
-    console.log('Saadud sert:');
-    console.log(JSON.stringify(c));
-    
-    res.status(200)
-    .json(
-      {
-        serditeave: x509.parseCert()
-      }
-    );
+  );
   });
-    */
 
 /**
  * Tõendi moodustamine
