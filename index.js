@@ -70,8 +70,8 @@ app.get('/kaardipoc', function (req, res) {
 
 /**
  * Dekodeeri PEM sert
+ */
  app.post('/decodeCert', jsonParser, function (req, res) {
-   */
 
 if (!req.body) {
   return res.status(500).json({ error: 'Sert ei tulnud päringus' });
