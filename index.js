@@ -20,6 +20,9 @@ const crypto = require('crypto');
 /* Määra räsialgoritm - SHA256 */
 const HASH_ALGO = 'sha256';
 
+/* X.509 serdi dekodeerija */
+const x509 = require('x509');
+
 /* JWT töötlemise teek */
 const jsonwebtoken = require('jsonwebtoken');
 
@@ -66,6 +69,28 @@ app.get('/kaardipoc', function (req, res) {
 });
 
 /**
+ * Dekodeeri PEM sert
+ */
+app.post('/decodeCert', jsonParser, function (req, res) {
+
+  if (!req.body) {
+    return res.status(500).json({ error: 'Sert ei tulnud päringus' });
+  }
+
+  var c = req.body.certPEM;
+
+  console.log('Saadud sert:');
+  console.log(JSON.stringify(c));
+
+  res.status(200)
+    .json(
+      {
+        serditeave: x509.parseCert()
+      }
+    );
+});
+
+/**
  * Tõendi moodustamine
  * AJAX-otspunkt,
  * võtab sirvikust tõendi keha, tagastab tõendi.
@@ -73,7 +98,7 @@ app.get('/kaardipoc', function (req, res) {
 app.post('/getJWT', jsonParser, function (req, res) {
 
   if (!req.body) {
-    return res.status(500).json({ error: 'Tõendi keha ei tulnud päringus'});
+    return res.status(500).json({ error: 'Tõendi keha ei tulnud päringus' });
   }
 
   console.log('Saadud päringukeha:');
@@ -88,7 +113,7 @@ app.post('/getJWT', jsonParser, function (req, res) {
       "subject": "Nõusolekutõend"
     });
 
-  res.status(200).json({ jwt: jwt});
+  res.status(200).json({ jwt: jwt });
 
 });
 
