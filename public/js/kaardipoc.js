@@ -29,7 +29,7 @@ function alusta() {
         });
 
     var options = { lang: 'et' };
-    if (document.getElementById("radio1").checked = true) {
+    if (document.getElementById("radio1").checked == true) {
       options['filter'] = 'AUTH'
     }
 
