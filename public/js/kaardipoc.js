@@ -12,7 +12,7 @@ function alusta() {
 
   $('#kontrolliNupp').click(() => {
 
-    logi("Alustan...");
+    logi(" ");
 
     if (!window.hwcrypto.use('auto')) {
       logi("Selecting backend failed.");
@@ -59,15 +59,12 @@ function alusta() {
         contentType: 'application/json',
         type: 'POST',
         success: (data, status) => {
-          var inimkujul = JSON.stringify(data.serditeave, undefined, 2);
-          console.log('kuvaSert: POST vastus: : ' +
-            inimkujul);
-          logi.text(inimkujul);
-          console.log('kuvaSert: POST vastus: status: ' + status);
           if (status !== 'success') {
             logi('Serdi dekodeerimine ebaõnnestus. :(');
             return
           }
+          var inimkujul = JSON.stringify(data.serditeave, undefined, 2);
+          logi(inimkujul);
         },
         error: (jqXHR, status, error) => {
           logi('Serdi dekodeerimine ebaõnnestus. :(');
@@ -77,6 +74,5 @@ function alusta() {
 
   }
 
-  logi('Laetud...');
 }
 

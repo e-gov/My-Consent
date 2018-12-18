@@ -16,7 +16,7 @@
 
 <body onload="alusta();">
 
-  <h1>Kaardieksperiment</h1>
+  <h1>Kaardi kontrolli POC</h1>
 
   <div id='abiteave'>
 
@@ -26,8 +26,8 @@
       serveri poolele. Server loeb serdilt serdi nr-i, subjekti ja väljaandja.
       Server saadab serdilt loetud andmed sirvikusse, kus need kuvatakse.<br>
       <br>
-      Sirvikus töötav Javascript pöördub hwcrypto.js, see omakorda ID-kaardi baastarkvara poole.
-      Sõltuvalt sirvikust on baastarkvara komponent Chrome Token Signing vm.<br><br>
+      Sirvikus töötav Javascript pöördub <a href='https://github.com/hwcrypto/hwcrypto.js/wiki/ModernAPI' target='_new'>hwcrypto.js</a>, see omakorda <a href='https://github.com/open-eid' target='_new'>ID-kaardi baastarkvara</a> poole.
+      Sõltuvalt sirvikust on baastarkvara komponent <a href='https://github.com/open-eid/chrome-token-signing' target='_new'>Chrome Token Signing</a> vm.<br><br>
       Serdi pärimisel küsib ID-kaardi baastarkvara alati kasutaja nõusolekut serdi edastamiseks
       rakendusele. Kaardi seesoleku kontrollimiseks ilma kasutajat tülitamata tuleks
       rakenduse Javascriptist pöörduda otse ID-kaardi baastarkvara poole (ilma hwcrypto.js-ta).
