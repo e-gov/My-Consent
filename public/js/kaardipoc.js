@@ -1,9 +1,5 @@
 'use strict';
 
-$('#sulgeAbiteaveNupp').click(() => {
-  $('#abiteave').addClass('peidetud');
-});
-
 function logi(teade) {
   $('#logi').append('<br>' + teade);
 }
