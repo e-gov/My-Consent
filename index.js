@@ -98,7 +98,7 @@ app.post('/decodeCert', jsonParser, function (req, res) {
   });
 
   var subject = '';
-  dc.issuer.typesAndValues.forEach((e) => {
+  dc.subject.typesAndValues.forEach((e) => {
     subject = subject +
       ((subject === '') ? '' : ', ') +
       e.value.valueBlock.value;
