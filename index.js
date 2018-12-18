@@ -20,7 +20,7 @@ const crypto = require('crypto');
 /* Määra räsialgoritm - SHA256 */
 const HASH_ALGO = 'sha256';
 
-/* X.509 serdi dekodeerija */
+/* X.509 serdi dekodeerimiseks */
 const forge = require('node-forge');
 
 /* JWT töötlemise teek */
@@ -90,6 +90,7 @@ res.status(200)
       serditeave: c
     }
   );
+ });
 
 /**
  * Tõendi moodustamine
