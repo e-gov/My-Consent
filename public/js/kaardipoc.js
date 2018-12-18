@@ -28,6 +28,7 @@ function alusta() {
       .then(
         function (response) {
           var certPEM = hexToPem(response.hex);
+          // var certDER = response.encoded;
           logi("Sert loetud:\n");
           kuvaSert(certPEM);
         },
@@ -49,9 +50,10 @@ function alusta() {
         contentType: 'application/json',
         type: 'POST',
         success: (data, status) => {
+          var inimkujul = JSON.stringify(data.serditeave, undefined, 2);
           console.log('kuvaSert: POST vastus: : ' +
-            JSON.stringify(data.serditeave, undefined, 2));
-          $('#Tulem').text(JSON.stringify(data.dekodeeritudSert, undefined, 2));
+            inimkujul);
+          $('#Tulem').text(inimkujul);
           console.log('kuvaSert: POST vastus: status: ' + status);
           if (status !== 'success') {
             logi('Serdi dekodeerimine ebaõnnestus. :(');

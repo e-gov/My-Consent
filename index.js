@@ -79,10 +79,14 @@ if (!req.body) {
 
 var c = req.body.cert;
 
-// var dc = forge.asn1.fromDer(c);
+// var abi = c.split()
+
+var dc = forge.pki.certificateFromPem(c);
+
+// var dc = forge.util.decode64(c);
 
 console.log('Saadud sert:');
-console.log(JSON.stringify(c));
+console.log(JSON.stringify(dc));
 
 res.status(200)
   .json(
