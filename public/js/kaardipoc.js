@@ -24,7 +24,7 @@ function alusta() {
           return;
         });
 
-    window.hwcrypto.getCertificate({ lang: 'et' })
+    window.hwcrypto.getCertificate({ lang: 'et', filter: 'AUTH' })
       .then(
         function (response) {
           var certPEM = hexToPem(response.hex);
