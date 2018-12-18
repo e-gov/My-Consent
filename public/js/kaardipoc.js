@@ -39,13 +39,13 @@ function alusta() {
   });
 
 
-  function kuvaSert(certPEM) {
+  function kuvaSert(cert) {
     // Tee AJAX-pöördumine serveri poolele sserdi dekodeerimiseks
     $.ajax(
       'https://volli-poc.herokuapp.com/decodeCert',
       {
         data: JSON.stringify({
-          certPEM: certPEM }),
+          cert: cert }),
         contentType: 'application/json',
         type: 'POST',
         success: (data, status) => {
