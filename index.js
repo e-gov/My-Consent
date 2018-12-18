@@ -78,14 +78,15 @@ if (!req.body) {
 }
 
 var c = req.body.cert;
+console.log('Saadud sert:');
+console.log(c);
 
-// var abi = c.split()
-
+console.log('Dekodeerin serti...');
 var dc = forge.pki.certificateFromPem(c);
+console.log('Sert dekodeeritud...');
 
 // var dc = forge.util.decode64(c);
 
-console.log('Saadud sert:');
 console.log(JSON.stringify(dc));
 
 res.status(200)
