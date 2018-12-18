@@ -90,7 +90,6 @@ res.status(200)
       serditeave: c
     }
   );
-  });
 
 /**
  * Tõendi moodustamine
