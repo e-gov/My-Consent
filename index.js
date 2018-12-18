@@ -70,25 +70,25 @@ app.get('/kaardipoc', function (req, res) {
 
 /**
  * Dekodeeri PEM sert
- */
-app.post('/decodeCert', jsonParser, function (req, res) {
-
-  if (!req.body) {
-    return res.status(500).json({ error: 'Sert ei tulnud päringus' });
-  }
-
-  var c = req.body.certPEM;
-
-  console.log('Saadud sert:');
-  console.log(JSON.stringify(c));
-
-  res.status(200)
+ app.post('/decodeCert', jsonParser, function (req, res) {
+   
+   if (!req.body) {
+     return res.status(500).json({ error: 'Sert ei tulnud päringus' });
+    }
+    
+    var c = req.body.certPEM;
+    
+    console.log('Saadud sert:');
+    console.log(JSON.stringify(c));
+    
+    res.status(200)
     .json(
       {
         serditeave: x509.parseCert()
       }
     );
-});
+  });
+    */
 
 /**
  * Tõendi moodustamine
