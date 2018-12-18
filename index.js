@@ -1,6 +1,10 @@
 /*
   VOLLI-Exp - Eksperimentaalne nõusolekuteenus
 
+  Sisaldab ka:
+    kaardi kontrolli POC
+    käivitamine: /kaardipoc
+
   Priit Parmakson 2018
 */
 
@@ -52,6 +56,13 @@ var jsonParser = bodyParser.json();
  */
 app.get('/', function (req, res) {
   res.render('pages/index');
+});
+
+/**
+ * Kaardikontrolli POC
+ */
+app.get('/kaardipoc', function (req, res) {
+  res.render('pages/kaardipoc');
 });
 
 /**

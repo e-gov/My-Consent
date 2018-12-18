@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Kaardieksperiment</title>
+
+    <% include ../partials/header.ejs %>
+
+    <!-- Including CryptoJS required libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/hmac-sha256.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64-min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/kaardipoc.css" />
+    <script src='/js/kaardipoc.js'></script>
+  </head>
+
+  <body onload="alusta();">
+
+    <h1>Kaardieksperiment</h1>
+
+    <div id='tegevusriba' class='inline-riba'>
+      <div class='inline'>
+        Kas ID-kaart on kaardilugejas?
+      </div>
+      <div id='kontrolliNupp' class='tekstinupp inline' title='Kinnita'>
+        Kontrolli
+      </div>
+    </div>
+
+    <div id='logi'>
+    </div>
+
+  </body>
+
+</html>
