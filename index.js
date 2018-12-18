@@ -149,8 +149,8 @@ app.post('/getJWT', jsonParser, function (req, res) {
 // It uses webcrypto which needs browser shims
 require('babel-polyfill')
 
-function decodeCert(pem) {
-    if(typeof pem !== 'string') {
+function decodeCert(cert) {
+    if(typeof cert !== 'string') {
         throw new Error('Expected PEM as string')
     }
 
