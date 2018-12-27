@@ -22,11 +22,17 @@ app.set('views', __dirname + '/views');
 // Määra kasutatav mallimootor
 app.set('view engine', 'ejs');
 
-
 // Esilehe kuvamine
 app.get('/', function (req, res) {
   console.log('avaleht');
-  res.render('avaleht');
+  res.render('pages/id-kaardi-uuring-avaleht');
+});
+
+// Teise lehe kuvamine
+app.get('/teine', function (req, res) {
+  // Siin saab tellida TLS seansi ümberkätluse
+  // https://nodejs.org/api/tls.html#tls_tlssocket_renegotiate_options_callback
+  res.render('pages/id-kaardi-uuring-teine');
 });
 
 // -------- Defineeri HTTPS server -------- 
