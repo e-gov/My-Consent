@@ -25,14 +25,40 @@ app.set('view engine', 'ejs');
 // Esilehe kuvamine
 app.get('/', function (req, res) {
   console.log('avaleht');
-  res.render('pages/id-kaardi-uuring-avaleht');
+  res.render('pages/uuring-avaleht');
 });
 
 // Teise lehe kuvamine
 app.get('/autendi', function (req, res) {
   // Siin saab tellida TLS seansi ümberkätluse
   // https://nodejs.org/api/tls.html#tls_tlssocket_renegotiate_options_callback
-  res.render('pages/id-kaardi-uuring-autendi');
+  console.log('abi');
+  console.log(req.connection.getProtocol()); // Töötab!
+
+  if (req.connection.authorized) {
+    console.log('klient autenditud');
+  }
+  else {
+    console.log('klient autentimata');
+  }
+
+  req.connection.renegotiate(
+    {
+      requestCert: true,
+      rejectUnauthorized: true
+    },
+    (e) => {
+      if (e == null) {
+        console.log('edukas');
+        var kliendisert = req.connection.getPeerCertificate();
+        console.log(kliendisert.fingerprint);
+        res.render('pages/uuring-autendi');
+      } else {
+        console.log(e.toString());
+        res.render('Autentimine ebaõnnestus');
+      }
+    });
+    
 });
 
 // -------- Defineeri HTTPS server -------- 
