@@ -58,7 +58,7 @@ app.get('/autendi', function (req, res) {
         res.render('Autentimine ebaõnnestus');
       }
     });
-    
+
 });
 
 // -------- Defineeri HTTPS server -------- 
@@ -71,14 +71,14 @@ var HTTPS_S_options = {
       'https-server.cert'), 'utf8'),
   ca: [
     fs.readFileSync(path.join(__dirname, 'keys',
-      'ca.cert'), 'utf8')
-//    fs.readFileSync(path.join(__dirname, 'keys',
-//      'ESTEID-SK_2015.pem.crt'), 'utf8'),
-//    fs.readFileSync(path.join(__dirname, 'keys',
-//      'EE_Certification_Centre_Root_CA.pem.crt'), 'utf8')
+      'ca.cert'), 'utf8'),
+    fs.readFileSync(path.join(__dirname, 'keys',
+      'ESTEID-SK_2015.pem.crt'), 'utf8'),
+    fs.readFileSync(path.join(__dirname, 'keys',
+      'EE_Certification_Centre_Root_CA.pem.crt'), 'utf8')
   ],
-  requestCert: false,
-  rejectUnauthorized: false
+  requestCert: true,
+  rejectUnauthorized: true
 };
 // Kehtesta suvandid ja sea Express päringutöötlejaks
 var httpsServer = https.createServer(HTTPS_S_options, app);
