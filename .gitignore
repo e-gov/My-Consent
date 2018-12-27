@@ -1,9 +1,12 @@
-# Node build artifacts
+# Node.js moodulid jms
 node_modules
 npm-debug.log
 
-# Local development
+# Lokaalsed seaded
 *.env
 *.dev
 .DS_Store
 .vscode*
+
+# Võtmed
+keys
