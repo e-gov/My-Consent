@@ -1,13 +1,11 @@
-# Volli-POC
+# Consent-POC
 Nõusolekuteenuse *proof-of-concept* (POC).
 
 Selgituseks: 
 
 > Proof of concept (PoC) is a realization of a certain method or idea in order to demonstrate its feasibility, or a demonstration in principle with the aim of verifying that some concept or theory has practical potential. A proof of concept is usually small and may or may not be complete.
 
-Töötav POC-rakendus: [https://volli-poc.herokuapp.com/](https://volli-poc.herokuapp.com/)
-
-Taustateavet: https://github.com/e-gov/Volli-POC/wiki
+Taustateavet: https://github.com/e-gov/Consent-POC/wiki
 
 Kontseptsioon:
 
