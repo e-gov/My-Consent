@@ -1,4 +1,4 @@
-# Consent-POC
+# My-Consent
 Nõusolekuteenuse *proof-of-concept* (POC).
 
 Selgituseks: 
