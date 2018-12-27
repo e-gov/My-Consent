@@ -7,17 +7,14 @@
 /* Vajalike teekide laadimine */
 const fs = require('fs'); // Sertide laadimiseks
 const path = require('path');
+const http = require('http');
 const https = require('https');
-const util = require('util');
 
 /* Veebiraamistik Express */
 const express = require('express');
 
 /* Veebiserveri ettevalmistamine */
 const app = express();
-/* Kui Heroku keskkonnamuutujas ei ole määratud teisiti,
- siis kasutatakse porti 80. */
-app.set('port', (process.env.PORT || 80));
 
 /* Sea juurkaust, millest serveeritakse sirvikusse ressursse
  vt http://expressjs.com/en/starter/static-files.html 
@@ -34,6 +31,7 @@ app.set('view engine', 'ejs');
 
 // Esilehe kuvamine
 app.get('/', function (req, res) {
+  console.log('abi');
   console.log(req.connection.getProtocol()); // Töötab!
   if (req.connection.authorized) {
     console.log('klient autenditud');
@@ -85,13 +83,17 @@ var HTTPS_S_options = {
     fs.readFileSync(path.join(__dirname, 'keys',
       'EE_Certification_Centre_Root_CA.pem.crt'), 'utf8')
   ],
-  requestCert: true,
+  requestCert: false,
   rejectUnauthorized: false
 };
 // Kehtesta suvandid ja sea Express päringutöötlejaks
 var httpsServer = https.createServer(HTTPS_S_options, app);
+var httpServer = http.createServer(app);
 
 // Veebiserveri käivitamine 
 httpsServer.listen(5000, () => {
   console.log('HTTPS server kuuldel pordil: ' + httpsServer.address().port);
+});
+httpServer.listen(8000, () => {
+  console.log('HTTP server kuuldel pordil: ' + httpServer.address().port);
 });

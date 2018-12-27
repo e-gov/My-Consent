@@ -30,8 +30,9 @@ const jsonwebtoken = require('jsonwebtoken');
 /* Veebiserveri ettevalmistamine */
 const app = express();
 /* Kui Heroku keskkonnamuutujas ei ole määratud teisiti,
- siis kasutatakse porti 80. */
-app.set('port', (process.env.PORT || 80));
+ siis kasutatakse porti 5000. Node.js ei tööta <1024 portidel.
+*/
+app.set('port', (process.env.PORT || 5000));
 
 /* HTTP päringu keha töötlemise teek */
 const bodyParser = require('body-parser');
