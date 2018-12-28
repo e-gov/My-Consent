@@ -51,7 +51,7 @@ app.get('/autendi', function (req, res) {
       if (e == null) {
         console.log('edukas');
         var kliendisert = req.connection.getPeerCertificate();
-        console.log(kliendisert.fingerprint);
+        console.log(kliendisert.subject);
         res.render('pages/uuring-autendi');
       } else {
         console.log(e.toString());
@@ -77,8 +77,9 @@ var HTTPS_S_options = {
     fs.readFileSync(path.join(__dirname, 'keys',
       'EE_Certification_Centre_Root_CA.pem.crt'), 'utf8')
   ],
-  requestCert: true,
-  rejectUnauthorized: true
+  secureOptions:require('constants').SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION,
+  requestCert: false,
+  rejectUnauthorized: false
 };
 // Kehtesta suvandid ja sea Express päringutöötlejaks
 var httpsServer = https.createServer(HTTPS_S_options, app);
